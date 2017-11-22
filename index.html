@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <style>
+    	html,body,#d1{
+    		width:100%;
+    		height:100%;
+    	}
+    </style>
+    <script type="text/javascript">
+    window.onlopad=function (){
+	    	if(window.DeviceMotionEvent){
+	    			var imgs=['1.png',
+	    				'2.png',
+	    				'3.png',
+	    				'4.png',
+	    				'5.png']
+	    			var speed=25;
+	    			var x=y=z=lastX=lastY=lastZ=0;
+	    			window.ondevicemotion=function (event){
+	    				var a=event.accelerationIncludingGravity,
+	    				x=a.x;
+	    				y=a.y;
+	    				if(Math.abs(x-lastX)>speed||Math.abs(y-lastY)){
+	    					var d1=document.getElementById('d1');
+	    					d1.style.background="url('+imgs[Math.round(Math.random()*10)%5]+')";
+	    				}
+	    			}
+	    		}else{
+	    			alert('您的手机版本太低，不支持摇一摇功能');
+	    		}
+    }
+    		
+    </script>
+</head>
+<body>
+	<div id="d1">摇一摇，May you happy!</div>
+</body>
+</html>
